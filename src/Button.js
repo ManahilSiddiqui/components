@@ -1,9 +1,9 @@
 
-export default function Button() {
+export default function Button({ children }) {
 
     return (
         <div>
-            <button>Hi there</button>
+            <button> {children} </button>
         </div>
     )
 }
