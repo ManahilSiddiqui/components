@@ -1,4 +1,4 @@
-
+import Button from './Button';
 
 export default function App() {
 
@@ -6,7 +6,25 @@ export default function App() {
 
         <div>
 
-            App
+            <div>
+                <Button></Button>
+            </div>
+
+            <div>
+                <Button></Button>
+            </div>
+
+            <div>
+                <Button></Button>
+            </div>
+
+            <div>
+                <Button></Button>
+            </div>
+
+            <div>
+                <Button></Button>
+            </div>
 
         </div>
     )
