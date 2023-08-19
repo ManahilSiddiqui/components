@@ -19,19 +19,19 @@ export default function Button({
     )
 }
 
-Button.protoType = {
-    checkVariationValue: ({ primary, secondary, success, warning, danger}) => {
+Button.propTypes = {
+    checkVariationValue: () => {
         const count = 
-        Number(!! primary) +
-        Number(!! secondary) +
-        Number(!! warning) +
-        Number(!! success) +
-        Number(!! danger) +
+            Number(!!primary) +
+            Number(!!secondary) +
+            Number(!!warning) +
+            Number(!!success) +
+            Number(!!danger);
 
-    if (count > 1) {
-        return new Error(
-            'Only one of primary, secondary, sucess, warning, danger can be true'
-        );
+        if (count > 1) {
+            throw new Error(
+                'Only one of primary, secondary, success, warning, danger can be true'
+            );
+        }
     }
-    },
 };
