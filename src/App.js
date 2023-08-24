@@ -1,3 +1,4 @@
+import { GoBell, GoDatabase } from 'react-icons/go';
 import Button from './Button';
 
 export default function App() {
@@ -7,7 +8,7 @@ export default function App() {
         <div>
 
             <div>
-                <Button success rounded outline> Click me</Button>
+                <Button success rounded outline> <GoBell /> Click me</Button>
             </div>
 
             <div>
@@ -15,7 +16,7 @@ export default function App() {
             </div>
 
             <div>
-                <Button warning > See Deal </Button>
+                <Button warning > <GoDatabase /> See Deal </Button>
             </div>
 
             <div>
