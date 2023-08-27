@@ -22,8 +22,8 @@ export default function App(){
 
             <Dropdown 
             options={options} 
-            selection={selection} 
-            onSelect={handleSelect} 
+            value={selection} 
+            onChange={handleSelect} 
             />
 
         </div>

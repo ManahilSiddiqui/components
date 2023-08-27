@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Dropdown({ options, selection, onSelect }) {
+export default function Dropdown({ options, value, onChange }) {
     const [isOpen, setIsOpen] = useState(false);
 
     const handleClick = () => {
@@ -9,7 +9,7 @@ export default function Dropdown({ options, selection, onSelect }) {
 
     const handleOptionClick = (option) => {
         setIsOpen(false);
-        onSelect(option);
+        onChange(option);
     }
 
     const renderedOptions = options.map((option) => {
@@ -18,14 +18,12 @@ export default function Dropdown({ options, selection, onSelect }) {
         </div>
     });
 
-    let content = 'Select...';
-    if (selection) {
-        content = selection.label;
-    }
     return (
 
         <div>
-            <div onClick={handleClick}>{content}</div>
+            <div onClick={handleClick}>
+                {value?.label || 'Select...'}
+                </div>
             {isOpen && <div>{renderedOptions}</div>}
         </div>
     )
