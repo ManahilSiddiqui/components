@@ -1,18 +1,30 @@
+import { useState } from 'react';
 import Dropdown from './components/Dropdown';
 
 
 export default function App(){
+    const [selection, setSelection] = useState(null);
+
+    const handleSelect = (option) => {
+        setSelection(option);
+    };
+
+
     const options = [
         {label: 'Red', value:'red'},
         {label: 'Green', value:'green'},
-        {label: 'BLue', value:'blue'},
+        {label: 'Blue', value:'blue'},
     ]
 
     return (
 
         <div>
 
-            <Dropdown options={options} />
+            <Dropdown 
+            options={options} 
+            selection={selection} 
+            onSelect={handleSelect} 
+            />
 
         </div>
     )
