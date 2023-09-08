@@ -12,6 +12,16 @@ export default function ModalPage() {
     const handleClose = () => {
         setShowModal(false);
     };
+
+    const actionBar = <div>
+        <button onClick={handleClose} primary>I Accept</button>
+    </div>
+    const modal = <Modal onClose={handleClose} actionBar={actionBar}>
+        <p>
+            Here is an important agreement for you to accept
+        </p>
+
+        </Modal>
     
     return (
 
@@ -19,7 +29,7 @@ export default function ModalPage() {
             <Button onClick={handleClick} primary> 
             Open Modal
             </Button>
-            {showModal && <Modal onClose={handleClose} />}
+            {showModal && modal}
         </div>
     )
 }
