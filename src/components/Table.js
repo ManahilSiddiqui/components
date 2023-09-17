@@ -1,4 +1,5 @@
-import { Fragment } from 'react'
+import { Fragment } from 'react';
+
 export default function Table({ data, config, keyFn }) {
     const renderedHeaders = config.map((column) => {
         if (column.header) {
