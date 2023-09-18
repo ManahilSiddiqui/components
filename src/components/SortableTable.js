@@ -1,7 +1,23 @@
+import { useState } from 'react';
 import Table from './Table';
 
 export default function SortableTable(props) {
-    const { config } = props;
+    const [sortOrder, setSortOrder] = useState(null);
+    const [sortBy, setSortBy] = useState(null);
+    const { config, data } = props;
+
+    const handleClick = (label) => {
+        if (sortOrder === null) {
+            setSortOrder('asc');
+            setSortBy(label);
+        } else if (sortOrder === 'asc') {
+            setSortOrder('desc');
+            setSortBy(label);
+        } else if (sortOrder === 'desc') {
+            setSortOrder(null);
+            setSortBy(null);
+        }
+    };
 
     const updatedConfig = config.map((column) => {
         if (!column.sortValue) {
@@ -10,14 +26,34 @@ export default function SortableTable(props) {
 
         return {
             ...column,
-            header: () => <th>{column.label} IS SORTABLE</th>
+            header: () => <th onClick={() => handleClick(column.label)}>{column.label} IS SORTABLE</th>
         };
-    })
+    });
+
+    let sortedData = data;
+    if (sortOrder && sortBy) {
+       const { sortValue } = config.find(column => column.label === sortBy);
+       sortedData = [...data].sort(() => {
+        const valueA = sortValue(a);
+        const valueB = sortValue(b);
+
+        const reverseOrder = sortOrder === 'asc' ? 1 : -1;
+
+        if (typeof valueA === 'string') {
+            return valueA.localeCompare(valueB) * reverseOrder;
+        } else {
+            return (valueA - valueB) * reverseOrder;
+        }
+
+       });
+    }
 
     return (
 
         <div>
-            <Table {...props} config={updatedConfig} />
+            {sortOrder} - {sortBy}
+
+            <Table {...props} data={sortedData} config={updatedConfig} />
 
         </div>
     )
