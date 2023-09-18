@@ -8,6 +8,13 @@ import Table from './Table';
     const { config, data } = props;
 
     const handleClick = (label) => {
+        if (sortBy && label !== sortBy){
+            setSortOrder('asc');
+            setSortBy(label);
+            return;
+        }
+
+
         if (sortOrder === null) {
             setSortOrder('asc');
             setSortBy(label);
@@ -55,14 +62,9 @@ import Table from './Table';
     }
 
     return (
-
-        <div>
-            {sortOrder} - {sortBy}
-
             <Table {...props} data={sortedData} config={updatedConfig} />
 
-        </div>
-    )
+    );
 }
 
 function getIcons(label, sortBy, sortOrder) {
