@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { GoArrowSmallDown, GoArrowSmallUp} from 'react-icons/go';
+
 import Table from './Table';
 import useSort from '../hooks/use-sort';
 
@@ -43,16 +43,15 @@ function getIcons(label, sortBy, sortOrder) {
 
     if (sortOrder === null) {
         return <div>
-            <GoArrowSmallUp />
-            <GoArrowSmallDown />
+           
         </div>
     } else if (sortOrder === 'asc') {
         return  <div>
-        <GoArrowSmallUp />
+        
     </div>
     } else if (sortOrder === 'desc') {
         return  <div>
-        <GoArrowSmallDown />
+        
     </div>
     }
 }
